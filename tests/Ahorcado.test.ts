@@ -8,4 +8,22 @@ describe("Ahorcado", () => {
     expect(juego.palabraEnmascarada()).toBe("_ _ _ _");
     expect(juego.vidas()).toBe(6);
   });
+
+  it("revela todas las ocurrencias de una letra acertada sin restar vidas", () => {
+    const juego = new Ahorcado("CASA");
+
+    juego.adivinar("A");
+
+    expect(juego.palabraEnmascarada()).toBe("_ A _ A");
+    expect(juego.vidas()).toBe(6);
+  });
+
+  it("es case-insensitive al adivinar letras", () => {
+    const juego = new Ahorcado("CASA");
+
+    juego.adivinar("a");
+
+    expect(juego.palabraEnmascarada()).toBe("_ A _ A");
+    expect(juego.vidas()).toBe(6);
+  });
 });

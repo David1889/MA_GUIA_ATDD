@@ -1,0 +1,24 @@
+# Node modules
+node_modules/
+
+# Vite / Vitest / Playwright artifacts
+.vitest/
+.vite/
+node_modules/.vite/
+
+# Test results and generated feature specs
+test-results/
+.features-gen/
+
+# Coverage and build
+coverage/
+dist/
+
+# Editor and OS
+.vscode/
+.idea/
+.DS_Store
+*.log
+
+# Environment
+.env
