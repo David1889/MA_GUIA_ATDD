@@ -35,6 +35,8 @@ if (root) {
       if (messageEl) messageEl.textContent = "PERDISTE";
       if (wordEl) wordEl.textContent = juego.palabraRevelada();
       input.disabled = true;
+    } else {
+      if (messageEl) messageEl.textContent = "";
     }
   }
 
@@ -46,9 +48,13 @@ if (root) {
     if (e.key === "Enter") {
       const letra = input.value.trim();
       if (letra.length > 0) {
-        juego.adivinar(letra);
-        input.value = "";
-        render();
+        if (juego.fueIntentada(letra)) {
+          if (messageEl) messageEl.textContent = "Ya intentaste esa letra";
+        } else {
+          juego.adivinar(letra);
+          input.value = "";
+          render();
+        }
       }
     }
   });
