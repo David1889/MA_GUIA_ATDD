@@ -11,6 +11,9 @@ export class Ahorcado {
   }
 
   adivinar(letra: string): void {
+    if (this.juegoTerminado()) return;
+    if (!this.esLetraValida(letra)) return;
+
     const letraMayuscula = letra.toUpperCase();
 
     if (this.letrasAdivinadas.has(letraMayuscula)) return;
@@ -20,6 +23,14 @@ export class Ahorcado {
     if (!this.palabra.includes(letraMayuscula)) {
       this.intentos--;
     }
+  }
+
+  esLetraValida(letra: string): boolean {
+    return /^[a-zñ]$/i.test(letra);
+  }
+
+  juegoTerminado(): boolean {
+    return this.haGanado() || this.haPerdido();
   }
 
   fueIntentada(letra: string): boolean {

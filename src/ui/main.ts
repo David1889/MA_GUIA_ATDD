@@ -48,7 +48,9 @@ if (root) {
     if (e.key === "Enter") {
       const letra = input.value.trim();
       if (letra.length > 0) {
-        if (juego.fueIntentada(letra)) {
+        if (!juego.esLetraValida(letra)) {
+          if (messageEl) messageEl.textContent = "Entrada inválida";
+        } else if (juego.fueIntentada(letra)) {
           if (messageEl) messageEl.textContent = "Ya intentaste esa letra";
         } else {
           juego.adivinar(letra);
