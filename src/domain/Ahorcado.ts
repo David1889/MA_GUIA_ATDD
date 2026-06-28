@@ -38,4 +38,12 @@ export class Ahorcado {
       .split("")
       .every((letra) => this.letrasAdivinadas.has(letra));
   }
+
+  haPerdido(): boolean {
+    return this.intentos === 0;
+  }
+
+  palabraRevelada(): string {
+    return this.palabra.split("").join(" ");
+  }
 }

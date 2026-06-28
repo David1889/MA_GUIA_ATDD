@@ -31,6 +31,10 @@ if (root) {
     if (juego.haGanado()) {
       if (messageEl) messageEl.textContent = "GANASTE";
       input.disabled = true;
+    } else if (juego.haPerdido()) {
+      if (messageEl) messageEl.textContent = "PERDISTE";
+      if (wordEl) wordEl.textContent = juego.palabraRevelada();
+      input.disabled = true;
     }
   }
 
