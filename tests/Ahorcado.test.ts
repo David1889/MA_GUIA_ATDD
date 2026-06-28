@@ -77,4 +77,37 @@ describe("Ahorcado", () => {
     const juego = new Ahorcado("SOL");
     expect(juego.palabraRevelada()).toBe("S O L");
   });
+
+  it("repetir una letra acertada no descuenta vidas", () => {
+    const juego = new Ahorcado("CASA");
+
+    juego.adivinar("A");
+    juego.adivinar("A");
+
+    expect(juego.palabraEnmascarada()).toBe("_ A _ A");
+    expect(juego.vidas()).toBe(6);
+  });
+
+  it("repetir una letra fallada no vuelve a descuental", () => {
+    const juego = new Ahorcado("CASA");
+
+    juego.adivinar("X");
+    juego.adivinar("X");
+
+    expect(juego.vidas()).toBe(5);
+  });
+
+  it("fueIntentada devuelve true si la letra ya fue adivinada", () => {
+    const juego = new Ahorcado("CASA");
+
+    juego.adivinar("A");
+
+    expect(juego.fueIntentada("A")).toBe(true);
+  });
+
+  it("fueIntentada devuelve false si la letra no fue adivinada", () => {
+    const juego = new Ahorcado("CASA");
+
+    expect(juego.fueIntentada("A")).toBe(false);
+  });
 });
