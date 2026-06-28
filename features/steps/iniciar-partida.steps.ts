@@ -22,3 +22,7 @@ Then("se ven {int} vidas", async ({ page }, vidas: number) => {
 Then("se ve el mensaje {string}", async ({ page }, mensaje: string) => {
   await expect(page.getByTestId("message")).toHaveText(mensaje);
 });
+
+Then("el campo de entrada está deshabilitado", async ({ page }) => {
+  await expect(page.getByRole("textbox")).toBeDisabled();
+});
